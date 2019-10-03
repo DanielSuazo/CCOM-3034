@@ -1,11 +1,21 @@
 #include "BST.h"
 
-void BST::insert(ElementType e, Node* n = NULL) {
-  Node* n = new Node(e);
+Node* BST::insert(ElementType e, Node* n = NULL) {
   Node* temp = root;
   if (!root) {
-    root = n;
+    root = new Node(e);
   } else if (e > temp->data) {
-    insert(e, )
+    temp->right = insert(e, temp->right);
+  } else if (e < temp->data) {
+    temp->left = insert(e, temp->left);
   }
+  return temp;
+}
+
+void BST::inOrder(Node* t) const {
+        if(t == NULL)
+            return;
+        inOrder(t->left);
+        cout << t->data << " ";
+        inOrder(t->right);
 }

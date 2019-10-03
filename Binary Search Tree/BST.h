@@ -14,8 +14,8 @@ struct Node {
 class BST {
   private:
     Node* root;
-    int depth = 1;
   public:
-    BST();
-    void insert(ElementType e, Node* n = NULL);
+    BST(): root(NULL) {}
+    Node* insert(ElementType e, Node* n = NULL);
+    void inOrder(Node* t) const;
 };
