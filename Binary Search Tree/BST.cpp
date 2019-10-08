@@ -1,6 +1,6 @@
 #include "BST.h"
 
-Node* BST::insert(ElementType e, Node* n = NULL) {
+Node *BST::insert(ElementType e = 0, Node* n = NULL) {
   Node* temp = root;
   if (!root) {
     root = new Node(e);
@@ -13,9 +13,9 @@ Node* BST::insert(ElementType e, Node* n = NULL) {
 }
 
 void BST::inOrder(Node* t) const {
-        if(t == NULL)
-            return;
-        inOrder(t->left);
-        cout << t->data << " ";
-        inOrder(t->right);
+  if(t == NULL)
+    return;
+  inOrder(t->left);
+  cout << t->data << " ";
+  inOrder(t->right);
 }

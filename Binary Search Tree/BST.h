@@ -16,6 +16,6 @@ class BST {
     Node* root;
   public:
     BST(): root(NULL) {}
-    Node* insert(ElementType e, Node* n = NULL);
+    Node *insert(ElementType e = 0, Node* n = NULL);
     void inOrder(Node* t) const;
 };
