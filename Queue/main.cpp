@@ -2,12 +2,12 @@
 
 int main() {
   Queue q;
-  q.push(1);
-  q.push(2);
-  q.push(3);
-  ElementType n;
-  while (n = q.pop()) {
-    cout << n << endl;
+  string n;
+  while (getline(cin, n) && (n != "quit" || n != "Quit")) {
+    if (n == "remove") q.deQueue();
+    else if (n == "print") cout << q;
+    else q.enQueue(n);
+    cout << "To-Do List: \n" << q;
   }
 
   return 0; 

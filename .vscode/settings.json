@@ -6,6 +6,9 @@
         "algorithm": "cpp",
         "iosfwd": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp",
+        "*.tcc": "cpp"
     }
 }

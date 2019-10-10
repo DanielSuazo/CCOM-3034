@@ -1,29 +1,39 @@
 #include "queue.h"
 
 
-void Queue::push(ElementType e) {
-  Node *n = new Node(e, head, NULL);
-  head = n;
-  if (head->next) n->next->prev = n;
-  // in case of empty list the tail = head = n
-  if (!tail) tail = n;
+
+ostream &operator<<(ostream &out, const Queue &q) {
+  q.display(out);
+  return out;
+}
+
+void Queue::enQueue(ElementType e) {
+  Node *n = new Node(e, NULL);
+  if (tail) tail->next = n;
+  else head = n;
+  tail = n;
+  
 }
 
 
-ElementType Queue::pop() {
-  if (!tail) {
-    return NULL;
-    cout << "Error: cannot pop an empty queue." << endl;
+ElementType Queue::deQueue() {
+  if (!head) {
+    cout << "Error: cannot deQueue an empty queue." << endl;
+    return 0;
   }
-  ElementType final = tail->data;
-  if (tail != head) {
-    tail = tail->prev;
-    delete tail->next;
-    tail->next = NULL;
-  } else {
-    delete tail;
-    tail = NULL;
-  }
+  ElementType final = head->data;
+  Node* temp = head;
+  head = head->next;
+  delete temp;
   
   return final;
+}
+
+void Queue::display(ostream &out) const {
+  Node *p = head;
+  while(p) {
+    out << p->data << endl;
+    p = p->next;
+  }
+  out << endl;
 }

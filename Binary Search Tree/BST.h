@@ -14,8 +14,10 @@ struct Node {
 class BST {
   private:
     Node* root;
+    void inOrder(Node* t) const;
+    Node *insert(ElementType e, Node* n);
   public:
     BST(): root(NULL) {}
-    Node *insert(ElementType e = 0, Node* n = NULL);
-    void inOrder(Node* t) const;
+    void insert(ElementType e);
+    void display() const;
 };
