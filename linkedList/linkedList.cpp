@@ -16,6 +16,39 @@ bool Llist::hasCycle() const {
   return false;
 }
 
+void Llist::removeOdds() {
+  Node* curr = head;
+  cout << "kill me"<< endl;
+  while(head && head->data % 2 == 1) {
+    removeAfter(NULL);
+  }
+  cout << "die" << endl;
+  while(curr && curr->next) {
+    while(curr->next->data % 2 == 1) {
+      removeAfter(curr);
+    }
+    curr = curr->next;
+  }
+}
+
+void Llist::removeAfter(Node *cur) {
+  Node *suc;
+  if (cur == NULL and head != NULL){ //this removes the head node and assings the head->next as
+    suc = head->next;
+    delete head;
+    head = suc;
+
+    if (suc == NULL) tail = NULL;
+  }
+  else if (cur->next != NULL) {
+    suc = cur->next->next;
+    delete cur->next;
+    cur->next = suc;    
+    if (suc == NULL) tail = cur;
+  }
+  length--;
+}
+
 int Llist::indexOf(ElementType element) const {
   Node *curr = head;
   for (int i = 0; curr; i++) {

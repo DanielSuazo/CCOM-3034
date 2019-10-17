@@ -1,8 +1,9 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-typedef int ElementType;
+typedef string ElementType;
 
 class Node {
   public:
@@ -11,13 +12,15 @@ class Node {
     Node(ElementType d = 0, Node *n = NULL): data(d), next(n) {} 
 };
 
-class Stack {
+class Cache {
   private:
-    Node* top;
+    Node *head, *tail;
   public:
-    Stack() {top = NULL;}
+    Cache() {head = NULL; tail = NULL;}
+    void display(ostream &out) const;
     void push(ElementType e);
-    ElementType getTop() const;
+    ElementType front();
     void pop();
-    bool empty() const;
 };
+
+ostream &operator<<(ostream &out, const Cache &q);

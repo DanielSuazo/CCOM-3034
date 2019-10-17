@@ -2,20 +2,28 @@
 
 
 void Stack::push(ElementType e) {
-  Node *n = new Node(e, head);
-  head = n;
+  Node *n = new Node(e, top);
+  top = n;
 }
 
 
-int Stack::pop() {
-  if (!head) {
-    cout << "Error: cannot pop an empty stack." << endl;
+int Stack::getTop() const {
+  if (!top) { // make sure stack isnt empty
+    cout << "Error: empty stack." << endl;
     return 0;
+  } else return top->data;
+}
+
+void Stack::pop() {
+  if (top) { // make sure stack isnt empty
+    Node* n = top;
+    top = top->next;
+    delete n;
+  } else {
+    cout << "Error: empty stack." << endl;
   }
-  ElementType final = head->data;
-  Node* temp = head;
-  head = head->next;
-  delete temp;
-  
-  return final;
+}
+
+bool Stack::empty() const {
+  return !top;
 }

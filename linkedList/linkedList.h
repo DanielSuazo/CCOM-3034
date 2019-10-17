@@ -26,6 +26,8 @@ class Llist {
     void display(ostream &out) const;
     int indexOf(ElementType element) const;
     bool hasCycle() const;
+    void removeOdds();
+    void removeAfter(Node *cur);
 };
 
 ostream& operator<< (ostream &out, const Llist& L);

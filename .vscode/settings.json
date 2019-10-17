@@ -9,6 +9,7 @@
         "stack": "cpp",
         "istream": "cpp",
         "streambuf": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "tuple": "cpp"
     }
 }

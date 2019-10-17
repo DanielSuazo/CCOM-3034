@@ -5,14 +5,11 @@ using namespace std;
 
 int main() {
   Llist L;
-  int element, howMany;
-  cin >> howMany;
-  for (int i = 0; i < howMany; i++) {
-    cin >> element;
-    L.append(element);
-  }
+  L.append(4);
+  L.append(1);
+  L.append(3);
+  L.append(5);
+  L.append(2);
+  L.removeOdds();
   cout << L << endl;
-  L.head->next->next->next = L.head;
-  cout << boolalpha << L.hasCycle() << endl;
-  
 }
