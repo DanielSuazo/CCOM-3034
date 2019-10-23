@@ -10,7 +10,6 @@ int main() {
   ElementType n;
   while (n = s.getTop()) {
     cout << n << endl;
-    s.pop();
   }
   return 0; 
 }

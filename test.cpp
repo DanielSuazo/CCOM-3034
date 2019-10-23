@@ -1,21 +1,21 @@
-#include <iostream>
-#include<stack>
+#include<cstdio>
+#include<iostream>
+#include<ctime>
 
 using namespace std;
 
-class Node {
-  public:
-    int data;
-    Node *next;
-    Node(int d = 0, Node *n = NULL): data(d), next(n) {} 
-};
+int aa(int m, int n){
+    if(m==0) return n+1;
+    if(m>0 && n==0) return aa(m-1,1);
+    if(m>0 && n>0) return aa(m-1, aa(m, n-1));
+}
+int main(){
 
+    clock_t start;
 
-int main() {
-  stack<Node> s;
-  Node a(1);
-  s.emplace(a);
-  cout << s.top().data << endl;
-  a.data = 3;
-  cout << s.top().data << endl;
+    start = clock();
+
+    aa(4, 3);
+
+    cout << clock() - start << '\n';
 }
