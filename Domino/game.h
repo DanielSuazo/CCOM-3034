@@ -14,7 +14,6 @@ struct Tile {
 
 class Table : private std::deque<Tile> {
   public:
-    Table();
     int right() const { return back().r; }
     int left() const { return front().l; }
     void playRight(Tile t) { push_back(t); }
@@ -26,7 +25,6 @@ class Table : private std::deque<Tile> {
 
 class Player : public std::list<Tile> {
   public:
-    Player();
     Player operator=(std::list<Tile>);
     bool play(Table &board);
     void display(std::ostream &out) const;

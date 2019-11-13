@@ -1,7 +1,7 @@
 #include "game.h"
 
 int main() {
-  char n;
+  // Initiate variables, set board and deal all tiles to players
   Table table;
   table.setBoard();
   Player p1, p2, p3, p4;
@@ -10,13 +10,15 @@ int main() {
   p3 = table.dealTiles();
   p4 = table.dealTiles();
 
-  std::cout << table;
-  bool stuck = true;
-  while(stuck){
-    stuck = false;
+  // Loop as long as at least one player can play a domino
+  bool playable;
+  do {
+    playable = false;
 
-    stuck = p1.play(table) || stuck;
-    if (stuck) {
+
+    playable = p1.play(table) || playable; // makes playable true if player 1 can play
+    // Player 1 takes his turn
+    if (playable) { 
       std::cout << "Player 1's Turn!" << std::endl;
       std::cout << table;
       std::cout << "=====> ";
@@ -31,8 +33,9 @@ int main() {
     }
 
 
-    stuck = p2.play(table) || stuck;
-    if (stuck) {
+    playable = p2.play(table) || playable; // makes playable true if player 2 can play
+    // Player 2 takes his turn
+    if (playable) {
       std::cout << "Player 2's Turn!" << std::endl;
       std::cout << table;
       std::cout << "player 1: " << p1;
@@ -45,8 +48,10 @@ int main() {
       break;
     }
 
-    stuck = p3.play(table) || stuck;
-    if (stuck) {
+
+    playable = p3.play(table) || playable; // makes playable true if player 3 can play
+    // Player 3 takes his turn
+    if (playable) {
       std::cout << "Player 3's Turn!" << std::endl;
       std::cout << table;
       std::cout << "player 1: " << p1;
@@ -59,8 +64,10 @@ int main() {
       break;
     }
     
-    stuck = p4.play(table) || stuck;
-    if (stuck) {
+
+    playable = p4.play(table) || playable; // makes playable true if player 4 can play
+    // Player 4 takes his turn
+    if (playable) {
       std::cout << "Player 4's Turn!" << std::endl;
       std::cout << table;
       std::cout << "player 1: " << p1;
@@ -71,7 +78,8 @@ int main() {
     if (p4.empty()) {
       std::cout << "Player 4 wins!" << std::endl;
       break;
-    }
-  }
-  if (!stuck) std::cout << "F mano yikes. Se tranco la cosa." << std::endl;
+    } 
+  } while(playable);
+  // Print out the message that the game is no longer playable
+  if (!playable) std::cout << "F mano yikes. Se tranco la cosa." << std::endl;
 }

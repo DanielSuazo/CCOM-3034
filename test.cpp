@@ -1,21 +1,27 @@
 #include<cstdio>
 #include<iostream>
 #include<ctime>
+#include<stack>
 
 using namespace std;
 
-int aa(int m, int n){
-    if(m==0) return n+1;
-    if(m>0 && n==0) return aa(m-1,1);
-    if(m>0 && n>0) return aa(m-1, aa(m, n-1));
+int sumOfDigits(int n) {
+  int sum = 0;
+  while (n > 0) {
+    sum += n % 10;
+    n /= 10;
+  }
+  return sum;
 }
+
+bool divisibleByNine(int n) {
+  if (n == 9) return true;
+  else if (n < 9) return false;
+  else return divisibleByNine(sumOfDigits(n));
+}
+
 int main(){
-
-    clock_t start;
-
-    start = clock();
-
-    aa(4, 3);
-
-    cout << clock() - start << '\n';
+  int n;
+  while (cin >> n)
+  cout << boolalpha << divisibleByNine(n) << endl;
 }
