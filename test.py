@@ -1,5 +1,5 @@
-print("Run this number :", format(8, ">4.2f"))
-
-x = 5
-y = 4
-print((x, y))
+mod = int(input("Mod what? "))
+number = 0
+while (number != -1):
+  number = int(input("Number: "))
+  print (number % mod)
